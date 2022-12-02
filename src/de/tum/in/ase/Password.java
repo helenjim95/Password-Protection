@@ -94,7 +94,7 @@ public class Password {
         }
     }
 
-    //TODO: Create Strong Password
+    //Create Strong Password
     public static Password createStrongPassword() {
         System.out.println( "Create a strong password, which contains at least:\n One uppercase letter,\n One lowercase letter and\n One of the following special characters: ~ ? ! @ # $");
         System.out.println("Password:");
@@ -103,12 +103,13 @@ public class Password {
         Password password = new Password(userInput);
         try {
             password.strengthenPassword();
-        } catch (LowerCaseNotFoundException e) {
-            System.out.println(e);
-        } catch (SpecialCharNotFoundException e) {
-            System.out.println(e);
-        } catch (UpperCaseNotFoundException e) {
-            System.out.println(e);
+        } catch (LowerCaseNotFoundException le) {
+            System.out.println(le);
+        } catch (SpecialCharNotFoundException se) {
+//            System.out.println(password.special);
+            System.out.println(se);
+        } catch (UpperCaseNotFoundException ue) {
+            System.out.println(ue);
         } finally {
             if (password.checkStrength()) {
                 System.out.println("Great job!");
@@ -130,6 +131,6 @@ public class Password {
 
     public static void main(String[] args) {
         //TODO: Uncomment the following line once you're done with all the subtasks
-        //createStrongPassword();
+        createStrongPassword();
     }
 }
