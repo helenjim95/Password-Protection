@@ -56,7 +56,6 @@ public class Password {
 
     //2.3 Check Password
     public boolean checkStrength() {
-        this.isStrong = false;
         this.upperCase = false;
         this.lowerCase = false;
         this.special = false;
@@ -75,8 +74,8 @@ public class Password {
 
     //2.4 Strengthen Password
     public void strengthenPassword() throws UpperCaseNotFoundException, LowerCaseNotFoundException, SpecialCharNotFoundException {
-        if (checkStrength()) {
-            System.out.println("Your Password: " + passwordHidden() + " is strong enough.");
+        if (this.checkStrength()) {
+            System.out.println("Your Password: " + this.passwordHidden() + " is strong enough.");
         } else {
             if (!this.upperCase) {
                 throw new UpperCaseNotFoundException();
