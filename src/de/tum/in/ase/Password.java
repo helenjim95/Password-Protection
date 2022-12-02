@@ -79,17 +79,18 @@ public class Password {
 
     //2.4 Strengthen Password
     public void strengthenPassword() throws UpperCaseNotFoundException, LowerCaseNotFoundException, SpecialCharNotFoundException {
-        if (!upperCase) {
-            throw new UpperCaseNotFoundException();
-        }
-        if (!lowerCase) {
-            throw new LowerCaseNotFoundException();
-        }
-        if (!special) {
-            throw new SpecialCharNotFoundException();
-        }
         if (checkStrength()) {
             System.out.println("Your Password: " + passwordHidden() + " is strong enough.");
+        } else {
+            if (!upperCase) {
+                throw new UpperCaseNotFoundException();
+            }
+            if (!lowerCase) {
+                throw new LowerCaseNotFoundException();
+            }
+            if (!special) {
+                throw new SpecialCharNotFoundException();
+            }
         }
     }
 
