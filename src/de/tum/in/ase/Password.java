@@ -30,7 +30,6 @@ public class Password {
     }
 
     //Getters
-
     public String getPassword() {
         return password;
     }
@@ -69,19 +68,6 @@ public class Password {
         if (password.matches("(?=.*[+~?!@#$%^&*()_-]).*")) {
             this.special = true;
         }
-//        for (String string : characters) {
-//            char cha = string.charAt(0);
-//            if (Character.isLowerCase(cha)) {
-//                lowerCase = true;
-//            }
-//            if (Character.isUpperCase(cha)) {
-//                upperCase = true;
-//            }
-//            for (Character specialCharacter : specialCharacters) {
-//                if (((Character)cha).equals(specialCharacter)) {
-//                    special = true;
-//                }
-//            }
         isStrong = lowerCase && upperCase && special;
         return isStrong;
     }
@@ -91,13 +77,13 @@ public class Password {
         if (checkStrength()) {
             System.out.println("Your Password: " + passwordHidden() + " is strong enough.");
         } else {
-            if (!upperCase) {
+            if (!this.upperCase) {
                 throw new UpperCaseNotFoundException();
             }
-            if (!lowerCase) {
+            if (!this.lowerCase) {
                 throw new LowerCaseNotFoundException();
             }
-            if (!special) {
+            if (!this.special) {
                 throw new SpecialCharNotFoundException();
             }
         }
@@ -115,7 +101,7 @@ public class Password {
         } catch (LowerCaseNotFoundException le) {
             System.out.println(le);
         } catch (SpecialCharNotFoundException se) {
-//            System.out.println(password.special);
+            System.out.println(password.special);
             System.out.println(se);
         } catch (UpperCaseNotFoundException ue) {
             System.out.println(ue);
@@ -125,8 +111,8 @@ public class Password {
             } else {
                 System.out.println("Keep on trying.");
             }
+            return password;
         }
-        return password;
     }
 
 
@@ -139,7 +125,6 @@ public class Password {
 
 
     public static void main(String[] args) {
-        //TODO: Uncomment the following line once you're done with all the subtasks
         createStrongPassword();
     }
 }
