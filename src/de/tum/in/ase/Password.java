@@ -98,15 +98,10 @@ public class Password {
         Password password = new Password(userInput);
         try {
             password.strengthenPassword();
-        } catch (LowerCaseNotFoundException le) {
-            System.out.println(le);
-        } catch (SpecialCharNotFoundException se) {
-            System.out.println(password.special);
-            System.out.println(se);
-        } catch (UpperCaseNotFoundException ue) {
-            System.out.println(ue);
+        } catch (LowerCaseNotFoundException | UpperCaseNotFoundException | SpecialCharNotFoundException e) {
+            System.out.println(e);
         } finally {
-            if (password.checkStrength()) {
+            if (password.isStrong) {
                 System.out.println("Great job!");
             } else {
                 System.out.println("Keep on trying.");
