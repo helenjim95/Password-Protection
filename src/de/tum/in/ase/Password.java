@@ -60,21 +60,30 @@ public class Password {
         List<String> characters = List.of(password.split(""));
         List<Character> specialCharacters = new ArrayList<>(
                 Arrays.asList('+', '~', '?', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '-'));
-        for (String string : characters) {
-            char cha = string.charAt(0);
-            if (Character.isLowerCase(cha)) {
-                lowerCase = true;
-            }
-            if (Character.isUpperCase(cha)) {
-                upperCase = true;
-            }
-            for (Character specialCharacter : specialCharacters) {
-                if (((Character)cha).equals(specialCharacter)) {
-                    special = true;
-                }
-            }
+        if (password.matches("(?=.*[A-Z]).*")) {
+            this.upperCase = true;
         }
-        return lowerCase && upperCase && special;
+        if (password.matches("(?=.*[a-z]).*")) {
+            this.lowerCase = true;
+        }
+        if (password.matches("(?=.*[+~?!@#$%^&*()_-]).*")) {
+            this.special = true;
+        }
+//        for (String string : characters) {
+//            char cha = string.charAt(0);
+//            if (Character.isLowerCase(cha)) {
+//                lowerCase = true;
+//            }
+//            if (Character.isUpperCase(cha)) {
+//                upperCase = true;
+//            }
+//            for (Character specialCharacter : specialCharacters) {
+//                if (((Character)cha).equals(specialCharacter)) {
+//                    special = true;
+//                }
+//            }
+        isStrong = lowerCase && upperCase && special;
+        return isStrong;
     }
 
     //2.4 Strengthen Password
