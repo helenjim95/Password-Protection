@@ -56,9 +56,10 @@ public class Password {
 
     //2.3 Check Password
     public boolean checkStrength() {
-        List<String> characters = List.of(password.split(""));
-        List<Character> specialCharacters = new ArrayList<>(
-                Arrays.asList('+', '~', '?', '!', '@', '#', '$', '%', '^', '&', '*', '(', ')', '_', '-'));
+        this.isStrong = false;
+        this.upperCase = false;
+        this.lowerCase = false;
+        this.special = false;
         if (password.matches("(?=.*[A-Z]).*")) {
             this.upperCase = true;
         }
@@ -111,8 +112,8 @@ public class Password {
             } else {
                 System.out.println("Keep on trying.");
             }
-            return password;
         }
+        return password;
     }
 
 
